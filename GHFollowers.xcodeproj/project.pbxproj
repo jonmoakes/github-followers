@@ -20,6 +20,10 @@
 		AE93AD2423E3142E00094062 /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE93AD2323E3142E00094062 /* GFBodyLabel.swift */; };
 		AE93AD2623E314F600094062 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE93AD2523E314F600094062 /* GFAlertVC.swift */; };
 		AE93AD2823E31C9F00094062 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE93AD2723E31C9F00094062 /* UIViewController+Ext.swift */; };
+		AE93AD3523E335B300094062 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE93AD3423E335B300094062 /* Follower.swift */; };
+		AE93AD3723E3367A00094062 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE93AD3623E3367A00094062 /* User.swift */; };
+		AEF1D06A23E33C180086C83C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1D06923E33C180086C83C /* NetworkManager.swift */; };
+		AEF1D06D23E349FE0086C83C /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1D06C23E349FE0086C83C /* ErrorMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		AE93AD2323E3142E00094062 /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		AE93AD2523E314F600094062 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		AE93AD2723E31C9F00094062 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		AE93AD3423E335B300094062 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		AE93AD3623E3367A00094062 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AEF1D06923E33C180086C83C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AEF1D06C23E349FE0086C83C /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,21 +78,16 @@
 		AE93AD0023E0E4FC00094062 /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
-				AE93AD2D23E3327B00094062 /* New Group */,
-				AE93AD0F23E0E4FD00094062 /* Info.plist */,
-			);
-			path = GHFollowers;
-			sourceTree = "<group>";
-		};
-		AE93AD2D23E3327B00094062 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
+				AEF1D06B23E349E80086C83C /* Utilities */,
+				AEF1D06823E33C000086C83C /* Managers */,
+				AE93AD3323E335A000094062 /* Model */,
 				AE93AD3123E332E300094062 /* Support */,
 				AE93AD3023E332C300094062 /* Extensions */,
 				AE93AD2F23E332BC00094062 /* Custom Views */,
 				AE93AD2E23E332B500094062 /* Screens */,
+				AE93AD0F23E0E4FD00094062 /* Info.plist */,
 			);
-			path = "New Group";
+			path = GHFollowers;
 			sourceTree = "<group>";
 		};
 		AE93AD2E23E332B500094062 /* Screens */ = {
@@ -120,12 +123,37 @@
 		AE93AD3123E332E300094062 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				AE93AD0C23E0E4FD00094062 /* LaunchScreen.storyboard */,
 				AE93AD0123E0E4FC00094062 /* AppDelegate.swift */,
 				AE93AD0323E0E4FC00094062 /* SceneDelegate.swift */,
 				AE93AD0A23E0E4FD00094062 /* Assets.xcassets */,
-				AE93AD0C23E0E4FD00094062 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		AE93AD3323E335A000094062 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE93AD3423E335B300094062 /* Follower.swift */,
+				AE93AD3623E3367A00094062 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AEF1D06823E33C000086C83C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AEF1D06923E33C180086C83C /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AEF1D06B23E349E80086C83C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AEF1D06C23E349FE0086C83C /* ErrorMessage.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,14 +226,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE93AD3723E3367A00094062 /* User.swift in Sources */,
 				AE93AD1E23E2D75E00094062 /* GFTextField.swift in Sources */,
 				AE93AD1623E1797500094062 /* SearchVC.swift in Sources */,
 				AE93AD1C23E2D31C00094062 /* GFButton.swift in Sources */,
 				AE93AD2823E31C9F00094062 /* UIViewController+Ext.swift in Sources */,
 				AE93AD0223E0E4FC00094062 /* AppDelegate.swift in Sources */,
 				AE93AD2623E314F600094062 /* GFAlertVC.swift in Sources */,
+				AEF1D06D23E349FE0086C83C /* ErrorMessage.swift in Sources */,
 				AE93AD2423E3142E00094062 /* GFBodyLabel.swift in Sources */,
+				AE93AD3523E335B300094062 /* Follower.swift in Sources */,
 				AE93AD2223E3125F00094062 /* GFTitleLabel.swift in Sources */,
+				AEF1D06A23E33C180086C83C /* NetworkManager.swift in Sources */,
 				AE93AD2023E2EE9D00094062 /* FollowerListVC.swift in Sources */,
 				AE93AD1823E179A000094062 /* FavouritesListVC.swift in Sources */,
 				AE93AD0423E0E4FC00094062 /* SceneDelegate.swift in Sources */,
