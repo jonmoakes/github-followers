@@ -1,8 +1,8 @@
 //
-//  ErrorMessage.swift
+//  GFError.swift
 //  GHFollowers
 //
-//  Created by Jonathan Oakes on 30/01/2020.
+//  Created by Jonathan Oakes on 11/02/2020.
 //  Copyright © 2020 Jonathan Oakes. All rights reserved.
 //
 
