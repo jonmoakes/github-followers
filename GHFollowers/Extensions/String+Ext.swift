@@ -16,7 +16,6 @@ extension String  {
         dateFormatter.locale = Locale(identifier: "en_GB")
         dateFormatter.timeZone = .current
         
-        
         return dateFormatter.date(from: self)
     }
     
