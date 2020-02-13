@@ -11,17 +11,27 @@ import UIKit
 class UserInfoVC: UIViewController {
     
     let headerView = UIView()
+    let itemViewOne = UIView()
+    let itemViewTwo = UIView()
+    let dateLabel = GFBodyLabel(textAlignment: .center)
+    var itemViews: [UIView] = []
     
     var username: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+        layoutUI()
+        getUserInfo()
+    }
+    
+    func configureViewController() {
         view.backgroundColor = .systemBackground
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dimissVC))
         navigationItem.rightBarButtonItem = doneButton
-         
-        layoutUI()
-        
+    }
+    
+    func getUserInfo() {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
             
@@ -29,8 +39,10 @@ class UserInfoVC: UIViewController {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
+                    self.add(childVC: GFollowerItemVC(user: user), to: self.itemViewTwo)
+                    self.dateLabel.text = "GitHub Since \(user.createdAt.convertToDisplayFormat())"
                 }
-                
                 
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something Went Wrong", message: error.rawValue, buttonTitle: "Ok")
@@ -39,14 +51,33 @@ class UserInfoVC: UIViewController {
     }
     
     func layoutUI() {
-        view.addSubview(headerView)
-        headerView.translatesAutoresizingMaskIntoConstraints = false
+        let padding: CGFloat = 20
+        let itemHeight: CGFloat = 140
+        
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
+        
+        for itemView in itemViews {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                itemView.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor, constant: padding),
+                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+            ])
+        }
         
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            headerView.leadingAnchor.constraint(lessThanOrEqualTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 180),
+            
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
