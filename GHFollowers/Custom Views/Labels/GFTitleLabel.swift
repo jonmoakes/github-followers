@@ -26,10 +26,10 @@ class GFTitleLabel: UILabel {
     }
     
     private func configure() {
-        textColor = .label // black on light, white on dark
+        textColor = .label
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.90
-        lineBreakMode = .byTruncatingTail // breaks off with ...
+        lineBreakMode = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
 }

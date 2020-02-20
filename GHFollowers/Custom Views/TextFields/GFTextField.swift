@@ -26,19 +26,17 @@ class GFTextField: UITextField {
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray4.cgColor
         
-        textColor = .label // black on light mode and white on dark mode
-        tintColor = .label // blinking cursor
+        textColor = .label
+        tintColor = .label
         textAlignment = .center
         font = UIFont.preferredFont(forTextStyle: .title2)
-        adjustsFontSizeToFitWidth = true //long username reduces font size for example
+        adjustsFontSizeToFitWidth = true
         minimumFontSize = 12
         
         backgroundColor = .tertiarySystemBackground
-        autocorrectionType = .no // auto correct off for textfield
+        autocorrectionType = .no
         returnKeyType = .go
         clearButtonMode = .whileEditing
         placeholder = "Enter A Username"
-        
-    }
- 
+    } 
 }

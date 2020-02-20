@@ -13,14 +13,12 @@ class SearchVC: UIViewController {
     let logoImageView = UIImageView()
     let usernameTextField   = GFTextField()
     let callToActionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
-    var logoImageViewTopConstraint: NSLayoutConstraint!
     
-    var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty } // checks if textfield is not empty so isUsernameEntered will be true becuase it can't be empty if someething has been typed in.
+    var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground // will adapt to dark mode
+        view.backgroundColor = .systemBackground
         view.addSubviews(logoImageView, usernameTextField, callToActionButton)
         configureLogoImageView()
         configureTextField()
@@ -31,7 +29,7 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         usernameTextField.text = ""
-        navigationController?.setNavigationBarHidden(true, animated: true) // put it in view will appear so it is hidden every time
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     func createDismissKeyboardTapGesture() {
@@ -41,7 +39,7 @@ class SearchVC: UIViewController {
     
     @objc func pushFollowerListVC() {
         
-        guard isUsernameEntered else { // run code below guard statement if true, otherwise print no username.
+        guard isUsernameEntered else {
             presentGFAlertOnMainThread(title: "Empty Username", message: "Please Enter A Username. We Need To Know Who To Look For 😉", buttonTitle: "Ok")
             return
         }
@@ -53,18 +51,16 @@ class SearchVC: UIViewController {
     }
     
     func configureLogoImageView() {
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false // use auto layout
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         logoImageView.image = Images.ghLogo
         
         let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
         
-        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
-        logoImageViewTopConstraint.isActive = true
-        
-        NSLayoutConstraint.activate([ // rule of thumb is 4 coordinates. Is an array so don't forget commas!
-            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor), // don't need constant cus it's just centered
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant),
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
-            logoImageView.widthAnchor.constraint(equalToConstant: 200) // SE model is 320 points wide
+            logoImageView.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
     
@@ -93,7 +89,7 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        pushFollowerListVC()  // when the done button is pressed
+        pushFollowerListVC()
         return true
     }
 }
